@@ -14,60 +14,21 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/new_ticket') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">Title</label>
+                        <div class="form-group{{ $errors->has('cus_name') ? ' has-error' : '' }}">
+                            <label for="cus_name" class="col-md-4 control-label">Customer Name</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}">
+                                <input id="cus_name" type="text" class="form-control" name="cus_name" value="{{ old('cus_name') }}">
 
-                                @if ($errors->has('title'))
+                                @if ($errors->has('cus_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('title') }}</strong>
+                                        <strong>{{ $errors->first('cus_name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                            <label for="category" class="col-md-4 control-label">Category</label>
-
-                            <div class="col-md-6">
-                                <select id="category" type="category" class="form-control" name="category">
-                                    <option value="">Select Category</option>
-                                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-
-                                @if ($errors->has('category'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('category') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
-                            <label for="priority" class="col-md-4 control-label">Priority</label>
-
-                            <div class="col-md-6">
-                                <select id="priority" type="" class="form-control" name="priority">
-                                    <option value="">Select Priority</option>
-                                    <option value="low">Low</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="high">High</option>
-                                </select>
-
-                                @if ($errors->has('priority'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('priority') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                            <label for="message" class="col-md-4 control-label">Message</label>
+                            <label for="message" class="col-md-4 control-label">Problem Description</label>
 
                             <div class="col-md-6">
                                 <textarea rows="10" id="message" class="form-control" name="message"></textarea>
@@ -79,7 +40,32 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Email</label>
 
+                            <div class="col-md-6">
+                                <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}">
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label for="phone" class="col-md-4 control-label">Phone No</label>
+
+                            <div class="col-md-6">
+                                <input id="title" type="text" class="form-control" name="phone" value="{{ old('cus_name') }}">
+
+                                @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

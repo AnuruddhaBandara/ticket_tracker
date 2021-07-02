@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,22 +24,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//New Ticket creating
-// Route::get('new_ticket', 'TicketsController@create');
-Route::get('/new_ticket', 'App\Http\Controllers\TicketsController@create');
-
-
-//Ticket Storing
-Route::post('/new_ticket', 'App\Http\Controllers\TicketsController@store');
-
-
-Route::post('/logout',  [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//new ticket creating
+Route::get('/new_ticket', [TicketsController::class, 'create']);
+//ticket storing
+Route::post('/new_ticket', [TicketsController::class, 'store']);
 //See tickets
-Route::get('my_tickets', 'App\Http\Controllers\TicketsController@userTickets');
-
+Route::get('/my_tickets', [TicketsController::class, 'userTickets']);
 //Viewing specific ticket
-Route::get('tickets/{ticket_id}', 'App\Http\Controllers\TicketsController@show');
-
+Route::get('tickets/{ticket_id}', [TicketsController::class,'show']);
 //Comment
-Route::post('/comment', 'App\Http\Controllers\CommentsController@postComment');
+Route::post('/comment', [CommentsController::class,'postComment']);
+//search by customer name
+Route::get('/search',[TicketsController::class, 'search'])->name('web.search');;

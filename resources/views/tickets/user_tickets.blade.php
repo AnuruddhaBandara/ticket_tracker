@@ -9,7 +9,15 @@
                 <div class="panel-heading">
                     <i class="fa fa-ticket"> My Tickets</i>
                 </div>
-
+                <form action="{{ route('web.search') }}" method="GET">
+        
+                    <div class="form-group">
+                       <input type="text" class="form-control" name="query" placeholder="Search by Customer Name" value="{{ request()->input('query') }}">
+                    </div>
+                    <div class="form-group">
+                     <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                 </form>
                 <div class="panel-body">
                     @if ($tickets->isEmpty())
                         <p>You have not created any tickets.</p>
@@ -17,8 +25,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Category</th>
-                                    <th>Title</th>
+                                    <th>Customer Name</th>
                                     <th>Status</th>
                                     <th>Last Updated</th>
                                 </tr>
@@ -26,16 +33,11 @@
                             <tbody>
                             @foreach ($tickets as $ticket)
                                 <tr>
-                                    <td>
-                                    @foreach ($categories as $category)
-                                        @if ($category->id === $ticket->category_id)
-                                            {{ $category->name }}
-                                        @endif
-                                    @endforeach
-                                    </td>
+                                    <td>{{$ticket->cus_name}}</td>
+                                    
                                     <td>
                                         <a href="{{ url('tickets/'. $ticket->ticket_id) }}">
-                                            #{{ $ticket->ticket_id }} - {{ $ticket->title }}
+                                            #{{ $ticket->ticket_id }} 
                                         </a>
                                     </td>
                                     <td>

@@ -35,5 +35,13 @@ class AppMailer {
                     ->to($this->to)->subject($this->subject);
         });
     }
+    public function sendTicketComments($ticketOwner, $user, Ticket $ticket, $comment){
+        $this->to = $ticketOwner->email;
+        $this->subject = "RE:  (Ticket ID: $ticket->ticket_id)";
+        $this->view = 'emails.ticket_comments';
+        $this->data = compact('ticketOwner', 'user', 'ticket', 'comment');
+
+        return $this->deliver();
+    }
 
 }
