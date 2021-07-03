@@ -63,7 +63,7 @@ class TicketsController extends Controller
 
         $comments = $ticket->comments;
 
-        return view('tickets.show', compact('ticket', 'category', 'comments'));
+        return view('tickets.show', compact('ticket'));
     }
     function search(Request $request){
 

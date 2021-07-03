@@ -33,7 +33,7 @@ public function postComment(Request $request, AppMailer $mailer)
         return redirect()->back()->with("status", "Your comment has be submitted.");
 
         if ($comment->ticket->user->id !== Auth::user()->id) {
-            $mailer->sendTicketComments($comment->ticket->user, Auth::user(), $comment->ticket, $comment);
+            // $mailer->sendTicketComments($comment->ticket->user, Auth::user(), $comment->ticket, $comment);
         }
 }
 
